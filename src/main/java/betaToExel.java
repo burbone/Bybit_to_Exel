@@ -25,12 +25,12 @@ public class betaToExel {
             int end = str.indexOf("]]");
             str = str.substring(start, end);
             String[] strAll = str.split(",");
-            String timeMl = strAll[0]; // 1 столбец
-            String open = strAll[1]; // 3 столбец
-            String close = strAll[4]; // 4 столбец
-            String low = strAll[3]; // 5 столбец
-            String high = strAll[2]; // 6 столбец
-            Date date = new Date(Long.parseLong(timeMl)); // 2 столбец
+            String timeMl = strAll[0];
+            String open = strAll[1];
+            String close = strAll[4];
+            String low = strAll[3];
+            String high = strAll[2]; 
+            Date date = new Date(Long.parseLong(timeMl));
             Row row = sheet.createRow(i);
             row.createCell(0).setCellValue(timeMl);
             row.createCell(1).setCellValue(date.toString());
@@ -45,7 +45,7 @@ public class betaToExel {
             workbook.write(fileOut);
             fileOut.close();
         } catch (Exception e) {
-            System.out.println("ошибка");
+            System.out.println("error");
         }
 
         System.out.println("exel copy end");
