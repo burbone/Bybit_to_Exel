@@ -6,21 +6,22 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws ParseException, FileNotFoundException {
-        //create on desktop 2 file - ___.xlsx for exel and ___.txt for code work
-        //date like YYYY.MM.DD
-        String start = "2024.09.22";
-        String end = "2024.09.23";
-        /*
-        ----------------------------------------------------------------------------------------------------------------
-         */
+        infoTaker info = new infoTaker();
+        info.takeAll();
+        String start = info.getStartTime();
+        String end = info.getEndTime();
+        String symbol = info.getSymbol();
+        String interval = info.getInterval();
+
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         Date dateStart = format.parse(start);
         Date dateEnd = format.parse(end);
         long startL = dateStart.getTime();
         long endL = dateEnd.getTime();
+
         parseBybit parse = new parseBybit();
+        parse.parse(startL, endL, symbol, interval);
         betaToExel exel = new betaToExel();
-        parse.parse(startL, endL);
         exel.toExel();
     }
 }
