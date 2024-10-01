@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.util.SortedSet;
-
 public class infoTaker {
     String startTime;
     String endTime;
